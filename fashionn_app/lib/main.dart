@@ -1,14 +1,34 @@
 import 'package:fashionn_app/detay.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(ModaApp());
+void main() {
+  runApp(MaterialApp(home: MyApp(),theme: ThemeData(brightness: Brightness.light),debugShowCheckedModeBanner:false ,));
+}
 
-class ModaApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => AnaSayfa()));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AnaSayfa(),
+    return Scaffold(
+      body:Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/splashscreen.jpg"),
+                fit: BoxFit.cover)),
+      ),
     );
   }
 }
@@ -62,6 +82,7 @@ class _AnaSayfaState extends State<AnaSayfa>
             ]),
       ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.brown.withOpacity(0.8),
         elevation: 0,
         title: Text(
@@ -70,13 +91,13 @@ class _AnaSayfaState extends State<AnaSayfa>
               fontFamily: "Montserrat",
               fontSize: 22,
               fontWeight: FontWeight.bold,
-              color: Colors.black),
+              color: Colors.white.withOpacity(0.9)),
         ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.camera_alt),
-            color: Colors.black,
+            color: Colors.white.withOpacity(0.9),
           )
         ],
       ),
